@@ -10,8 +10,20 @@ public class gim_p1
 {
     public static void main(String[] args)
     {
-        File file = new File("p1_sample1.txt"); 
-        int moves = 100;
+        File file = new File(args[0]);
+        int moves = 0; 
+        try
+        {
+            moves = Integer.parseInt(args[2]);
+        }
+        catch
+        (NumberFormatException e)
+        {
+            System.err.println("!!!");
+            e.printStackTrace();
+        }
+        finally
+        {}
 
         ArrayList<Integer> acceptStates = new ArrayList<>();    // List of accept states
         ArrayList<Integer> rejectStates = new ArrayList<>();    // List of reject states
@@ -86,7 +98,7 @@ public class gim_p1
         {}
 
         // Process input string:
-        String inputString = "0011";              // Initial conditions
+        String inputString = args[1];              // Initial conditions
         int currentState = startState;
         int whereIsArrow = moves;
         int transitionIndex = 0;
